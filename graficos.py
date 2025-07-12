@@ -86,3 +86,33 @@ plt.xlabel("Número de Professores")
 plt.ylabel("Número de Alunos")
 plt.show()
 '''
+
+#Implementando Graficos de Setor
+'''
+df = pd.DataFrame({
+    "Tipo de Escola": ["Pública", "Privada", "Federal", "Estadual"],
+    "Número de Alunos": [500, 300, 200, 955], "Número de Professores": [100, 200, 150, 439]
+})
+
+cores = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray']
+dados_alunos = df["Número de Alunos"]
+dados_instituicao = df["Tipo de Escola"]
+plt.pie(dados_alunos, labels=dados_alunos.index, autopct='%1.1f%%')
+plt.title("Distribuição de Número de Alunos por Tipo de Escola")
+plt.show()
+'''
+#Implentando mais de um grafico de setor
+'''
+df = pd.DataFrame({"Tipo de Escola": ["Pública", "Privada", "Federal", "Estadual"],
+    "Número de Alunos": [500, 300, 200, 955], "Número de Professores": [100, 200, 150, 439]
+})
+
+x = df["Tipo de Escola"]
+fig, axs = plt.subplots(1, 2, figsize=(8, 4))
+df.plot.pie(y="Número de Alunos", ax=axs[0], autopct="%1.1f%%", colors=["blue", "orange", "green", "red"], labels=x)
+axs[0].set_title("Número de Alunos por Tipo de Escola")
+df.plot.pie(y="Número de Professores", ax=axs[1], autopct="%1.1f%%", colors=["blue", "orange", "green", "red"], labels=x)
+axs[1].set_title("Número de Professores por Tipo de Escola")
+plt.tight_layout()
+plt.show()
+'''
