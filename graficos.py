@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.datasets import fetch_california_housing
+import scipy.stats as stats
 
 '''
 Aqui vamos escrever algumas das funções de criação de graficos da biblioteca MatPlotLib.
@@ -49,7 +51,7 @@ df = pd.DataFrame({
 })
 
 
-df.plot.barh(x="Tipo de Escola", y="Número de Alunos", orientation="horizontal", color="red") 
+df.plot.barh(x="Tipo de Escola", y="Número de Alunos", orientation="horizontal", color="red")
 
 plt.title("Número de Alunos por Tipo de Escola")
 plt.xlabel("Número de Alunos")  # Aqui inverti, porque o eixo x é o valor numérico
@@ -116,3 +118,24 @@ axs[1].set_title("Número de Professores por Tipo de Escola")
 plt.tight_layout()
 plt.show()
 '''
+#Grafica Histograma
+
+#Carregando o rol de dados California Housing
+dat = fetch_california_housing()
+#Transformando em um DataFrame
+df = pd.DataFrame(dat.data, columns=dat.feature_names)
+
+#Gerando o histograma da Variavel "MedInc"
+
+plt.hist(df["MedInc"], bins=25, width=0.8)
+plt.title("Distribuição de MedInc")
+plt.xlabel("Valor")
+plt.ylabel("Frequência")
+plt.show()
+
+
+#Realizando teste de assimetria
+med_inc = dat.data[:, 0]
+statistic, pvalue = stats.skewtest(med_inc)
+print(f"Statistic:", {statistic})
+print(f"P-value:", {pvalue})
