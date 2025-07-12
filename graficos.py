@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.datasets import fetch_california_housing
 import scipy.stats as stats
+import numpy as np
 
 '''
 Aqui vamos escrever algumas das funções de criação de graficos da biblioteca MatPlotLib.
@@ -118,8 +119,8 @@ axs[1].set_title("Número de Professores por Tipo de Escola")
 plt.tight_layout()
 plt.show()
 '''
-#Grafica Histograma
-
+#Grafico Histograma
+'''
 #Carregando o rol de dados California Housing
 dat = fetch_california_housing()
 #Transformando em um DataFrame
@@ -139,3 +140,25 @@ med_inc = dat.data[:, 0]
 statistic, pvalue = stats.skewtest(med_inc)
 print(f"Statistic:", {statistic})
 print(f"P-value:", {pvalue})
+'''
+'''
+#Grafico Boxplot
+
+#Gerar dados de exemplo
+d1 = np.random.normal(100, 10, 200)
+d2 = np.random.normal(90, 20, 200)
+d3 = np.random.normal(80, 30, 200)
+d4 = np.random.normal(70, 40, 200)
+data = [d1, d2, d3, d4]
+
+#Plotar boxplot
+plt.boxplot(data)
+
+#Adicionar titulos e legendas
+plt.title('Boxplot de Exemplo')
+plt.ylabel('Valores')
+plt.xticks([1, 2, 3, 4], ['Grupo 1', 'Grupo 2', 'Grupo 3', 'Grupo 4'])
+
+#Mostrar o gráfico
+plt.show()
+'''
