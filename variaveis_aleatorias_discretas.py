@@ -86,3 +86,34 @@ probabilidade = stats.geom.pmf(k, p)+stats.geom.pmf(k+1, p)
 
 print(f"A probabilidade de que precise de no máximo {k+1 :.0f} é de {probabilidade:.5f}")
 '''
+
+#Distribuição Hipergeometrica
+'''
+import scipy.stats as stats
+
+#Inicialização das variaveis
+print("Para fazer esse calculo, precisaremos dos seguintes dados:")
+m = float(input("O tamanho total da Populção (m): "))
+n = float(input("número total de sucessos na população (n): "))
+k = float(input("O tamanho da amostra retirada (k): "))
+x = float(input("número de sucessos desejados na amostra (x): "))
+
+#Criar uma distribuição hipergeométrica com x, m e n
+distribuicao = stats.hypergeom(m,n,k)
+
+#Calcular a probabilidade de obter exatamente k sucessos na amostra
+probabilidade_k_sucessos = distribuicao.pmf(x)
+
+#Calcular a probabilidade de obter k ou menos sucessos na amostra
+probabilidade_k_ou_menos_sucessos = distribuicao.cdf(x)
+
+#Calcular média e variância da distribuição
+media = distribuicao.mean()
+variancia = distribuicao.var()
+
+#Exibir Resultados
+print(f"Probabilidade de obter exatamente {x:.0f} sucessos na amostra: {probabilidade_k_sucessos:.3f}")
+print(f"Probabilidade de obter {x:.0f} ou menos sucessos na amostra: {probabilidade_k_ou_menos_sucessos:.3f}")
+print(f"Média: {media:.1f}")
+print(f"Variância: {variancia:.2f}")
+'''
