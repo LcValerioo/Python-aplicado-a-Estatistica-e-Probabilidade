@@ -141,7 +141,7 @@ statistic, pvalue = stats.skewtest(med_inc)
 print(f"Statistic:", {statistic})
 print(f"P-value:", {pvalue})
 '''
-'''
+
 #Grafico Boxplot
 
 #Gerar dados de exemplo
@@ -161,4 +161,3 @@ plt.xticks([1, 2, 3, 4], ['Grupo 1', 'Grupo 2', 'Grupo 3', 'Grupo 4'])
 
 #Mostrar o gráfico
 plt.show()
-'''
