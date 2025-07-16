@@ -53,3 +53,36 @@ print(f"Probabilidade de obter exatamente {y:.0f} ou menos sucessos: {probabilid
 print(f"Média: {media:.2f}")
 print(f"Variância: {variancia:.2f}")
 '''
+
+#Distribuição Geometrica
+
+#Frequencia absoluta 
+'''
+import scipy.stats as stats
+
+print("Nosso interesse é calcular a probabilidade de se obter um sucesso, após n fracassos ocorrerem.")
+#Definir a probabilidade de sucesso (p)
+p = float(input("Insira o valor da probabilidade de sucesso (p): "))
+
+#Definir o número de tentativas até o primeiro sucesso (k)
+k = float(input("Insira o número de tentativas até o primeiro sucesso (k): "))
+
+#Calcular a probabilidade de X = k usando a função pmf da distribuição geométrica
+probabilidade = stats.geom.pmf(k, p)
+
+print(f"A probabilidade de precisar de exatamente {k:.0f} é de {probabilidade:.5f}")
+'''
+#Frequencia acumulada
+'''
+import scipy.stats as stats
+# Definir a probabilidade de sucesso (p)
+p = float(input("Insira o valor da probabilidade de sucesso (p): "))
+
+#Definir o número de tentativas até o primeiro sucesso (k)
+k = float(input("Insira o número de tentativas até o primeiro sucesso (k): "))
+
+# Calcular a probabilidade de X=k usando a função pmf da distribuição geométrica
+probabilidade = stats.geom.pmf(k, p)+stats.geom.pmf(k+1, p)
+
+print(f"A probabilidade de que precise de no máximo {k+1 :.0f} é de {probabilidade:.5f}")
+'''
