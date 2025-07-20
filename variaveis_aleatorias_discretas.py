@@ -124,18 +124,18 @@ from scipy.stats import poisson
 x = float(input("Digite o numero de eventos a ser calculada: "))
 y = float(input("Digite a media dos dados desse evento: "))
 
+#Probabilidade de ocorrem x eventos com taxa média y
 prob = poisson.pmf(x, y)
 
-print(f"A probabilidade de acontencer {x:.0f} eventos é de: {prob:.3f}")
+#Função de massa de probabilidade acumulada
+prob_acumulada = poisson.cdf(x, y)
+
+#Gerar uma amostra aleatória da distribuição de Poisson
+amostra = poisson.rvs(y, size= 1000)
+
+print(f"A probabilidade de acontencer exatamente {x:.0f} eventos é de: {prob:.3f}")
 print(f"Ou {100* prob:.1f}%")
-'''
-#Ainda no Poisson
-'''
-import numpy as np
-# definir a média lambda
-lambda_ = 2
-# gerar a distribuição de Poisson com numpy
-poisson_dist = np.random.poisson(lambda_, size=1000)
-# exibir os primeiros 20 valores da distribuição
-print(poisson_dist[:20])
+print(f"A probabilidade acumulada até {x:.0f} é de: {prob_acumulada:.3f}")
+print(f"Ou {100* prob_acumulada:.1f}%")
+print("Amostra gerada: ", amostra[:20])
 '''
