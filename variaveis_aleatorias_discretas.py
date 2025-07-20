@@ -117,3 +117,25 @@ print(f"Probabilidade de obter {x:.0f} ou menos sucessos na amostra: {probabilid
 print(f"Média: {media:.1f}")
 print(f"Variância: {variancia:.2f}")
 '''
+#Distribuição de Poisson
+'''
+from scipy.stats import poisson
+
+x = float(input("Digite o numero de eventos a ser calculada: "))
+y = float(input("Digite a media dos dados desse evento: "))
+
+prob = poisson.pmf(x, y)
+
+print(f"A probabilidade de acontencer {x:.0f} eventos é de: {prob:.3f}")
+print(f"Ou {100* prob:.1f}%")
+'''
+#Ainda no Poisson
+'''
+import numpy as np
+# definir a média lambda
+lambda_ = 2
+# gerar a distribuição de Poisson com numpy
+poisson_dist = np.random.poisson(lambda_, size=1000)
+# exibir os primeiros 20 valores da distribuição
+print(poisson_dist[:20])
+'''
